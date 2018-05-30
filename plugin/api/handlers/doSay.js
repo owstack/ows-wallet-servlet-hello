@@ -24,16 +24,20 @@ angular.module('owsWalletPlugin.api').service('doSay', function(System) {
     }
 
     // Grab the request data.
-    var msg = message.request.data.message;
+    var msg = message.request.data.data.message;
     var text = message.request.data.config.text;
 
     // Set a response and reply.
-    var helloReponse = 'You said \'' + msg + '\'\n' + 'The dependency configuration text is \'' + pluginConfig.text + '\'';
+    var helloResponse = {
+    	a: 'Greetings from the Hello servlet!',
+    	b: 'You said \'' + msg + '\'',
+    	c: 'The dependency configuration text is \'' + text + '\''
+    };
 
     message.response = {
       statusCode: 200,
       statusText: 'OK',
-      data: helloReponse
+      data: helloResponse
     };
 		return callback(message);
 

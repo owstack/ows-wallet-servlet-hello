@@ -2,7 +2,7 @@
 
 angular.module('owsWalletPlugin.api').factory('Hello', function (ApiMessage, Session) {
 
-  var pluginId = 'org.openwalletstack.wallet.plugin.servlet.hello';
+  Hello.pluginId = 'org.openwalletstack.wallet.plugin.servlet.hello';
 
   /**
    * Constructor.
@@ -14,7 +14,7 @@ angular.module('owsWalletPlugin.api').factory('Hello', function (ApiMessage, Ses
   function Hello(configId) {
     var self = this;
 
-    var config = Session.getInstance().plugin.dependencies[pluginId][configId];
+    var config = Session.getInstance().plugin.dependencies[Hello.pluginId][configId];
     if (!config) {
       throw new Error('Could not create instance of Hello, check plugin configuration');
     }
@@ -45,10 +45,6 @@ angular.module('owsWalletPlugin.api').factory('Hello', function (ApiMessage, Ses
     };
 
     return this;
-  };
-
-  Hello.pluginId = function() {
-    return pluginId;
   };
  
   return Hello;
