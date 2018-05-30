@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('owsWalletPlugin').config(function($stateProvider) {
+angular.module('owsWalletPlugin').config(function($pluginConfigProvider) {
 
   /**
    * API routes for our service.
