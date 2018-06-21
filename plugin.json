@@ -13,7 +13,10 @@
       "terms": "https://openwalletstack.org/terms",
       "git": "https://github.com/owstack/ows-wallet-servlet-hello/"
     },
-    "commitHash": "a543f58"
+    "commitHash": "56a461b"
+  },
+  "api": {
+    "root": "/hello"
   },
   "permissions": {
     "delete": false

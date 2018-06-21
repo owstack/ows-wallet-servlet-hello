@@ -1,23 +1,18 @@
 'use strict';
 
-angular.module('owsWalletPlugin.api').factory('Hello', function (ApiMessage, Session) {
-
-  Hello.pluginId = 'org.openwalletstack.wallet.plugin.servlet.hello';
+angular.module('owsWalletPlugin.api').factory('Hello', function (HelloServlet, ApiMessage, PluginAPIHelper, Session) {
 
   /**
    * Constructor.
    * @param {Object} configId - The configuration ID for the servlet.
    * @constructor
-   *
-   * config = {}
    */
   function Hello(configId) {
     var self = this;
 
-    var config = Session.getInstance().plugin.dependencies[Hello.pluginId][configId];
-    if (!config) {
-      throw new Error('Could not create instance of Hello, check plugin configuration');
-    }
+    var servlet = new PluginAPIHelper(HelloServlet);
+    var apiRoot = servlet.apiRoot();
+    var config = servlet.getConfig(configId);
 
     /**
      * Public functions
@@ -31,7 +26,7 @@ angular.module('owsWalletPlugin.api').factory('Hello', function (ApiMessage, Ses
     this.say = function(message) {
       var request = {
         method: 'POST',
-        url: '/hello/say',
+        url: apiRoot + '/hello/say',
         data: {
           config: config,
           data: {
@@ -48,4 +43,11 @@ angular.module('owsWalletPlugin.api').factory('Hello', function (ApiMessage, Ses
   };
  
   return Hello;
+});
+
+'use strict';
+
+angular.module('owsWalletPlugin.api').constant('HelloServlet', 
+{
+  id: 'org.openwalletstack.wallet.plugin.servlet.hello'
 });
