@@ -1,6 +1,16 @@
 'use strict';
 
-angular.module('owsWalletPlugin.api').factory('Hello', function (HelloServlet, ApiMessage, PluginAPIHelper, Session) {
+angular.module('owsWalletPlugin.api.hello', []).namespace().constant('HelloServlet', 
+{
+  id: 'org.openwalletstack.wallet.plugin.servlet.hello'
+});
+
+'use strict';
+
+angular.module('owsWalletPlugin.api.hello').factory('Hello', ['ApiMessage', 'owsWalletPlugin.api.hello.HelloServlet', 'owsWalletPluginClient.api.PluginAPIHelper', 'owsWalletPluginClient.api.Session', function (ApiMessage,
+  /* @namespace owsWalletPlugin.api.hello */ HelloServlet,
+  /* @namespace owsWalletPluginClient.api */ PluginAPIHelper,
+  /* @namespace owsWalletPluginClient.api */ Session) {
 
   /**
    * Constructor.
@@ -32,22 +42,21 @@ angular.module('owsWalletPlugin.api').factory('Hello', function (HelloServlet, A
           data: {
             message: message
           }
-        },
-        responseObj: String
+        }
       }
 
-      return new ApiMessage(request).send();
+      return new ApiMessage(request).send().then(function(response) {
+        return response.data;
+
+      }).catch(function(error) {
+        $log.error('Hello.say(): ' + error.message + ', ' + error.detail);
+        throw new Error(error.message);
+        
+      });
     };
 
     return this;
   };
  
   return Hello;
-});
-
-'use strict';
-
-angular.module('owsWalletPlugin.api').constant('HelloServlet', 
-{
-  id: 'org.openwalletstack.wallet.plugin.servlet.hello'
-});
+}]);
