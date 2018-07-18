@@ -32,7 +32,7 @@ angular.module('owsWalletPlugin.apiHandlers').service('doSay', function(
     var helloResponse = {
     	a: 'Greetings from the Hello servlet!',
     	b: 'You said \'' + msg + '\'',
-    	c: 'The dependency configuration text is \'' + text + '\''
+    	c: 'The configuration text is \'' + text + '\''
     };
 
     message.response = {
