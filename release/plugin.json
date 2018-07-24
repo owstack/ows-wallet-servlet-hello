@@ -13,7 +13,7 @@
       "terms": "https://openwalletstack.org/terms",
       "git": "https://github.com/owstack/ows-wallet-servlet-hello/"
     },
-    "commitHash": "7810671"
+    "commitHash": "ba9fdbf"
   },
   "api": {
     "root": "/hello"
@@ -21,10 +21,9 @@
   "permissions": {
     "delete": false
   },
-  "galleryImage": "<plugin-path>/img/gallery.png",
-  "previewImage": "<plugin-path>/img/preview.png",
-  "iconImage": "<plugin-path>/img/icon.png",
-  "splashImage": "<plugin-path>/img/splash.png",
+  "galleryImage": "img/gallery.png",
+  "previewImage": "img/preview.png",
+  "iconImage": "img/icon.png",
   "store": {
     "id": "0",
     "rating": "4+",
