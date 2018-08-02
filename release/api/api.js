@@ -29,9 +29,9 @@ angular.module('owsWalletPlugin.api.hello').factory('Hello', ['ApiMessage', 'ows
      */
 
     /**
-     * Create a new invoice.
-     * @param {Object} data - Payment request data.
-     * @return {Promise<Invoice>} A promise for the invoice.
+     * Say something.
+     * @param {Object} message - What to say.
+     * @return {Promise<Invoice>} A promise for the response.
      */
     this.say = function(message) {
       var request = {
