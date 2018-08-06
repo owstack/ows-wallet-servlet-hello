@@ -7,9 +7,10 @@ angular.module('owsWalletPlugin.api.hello', []).namespace().constant('HelloServl
 
 'use strict';
 
-angular.module('owsWalletPlugin.api.hello').factory('Hello', ['ApiMessage', 'owsWalletPlugin.api.hello.HelloServlet', 'owsWalletPluginClient.api.PluginAPIHelper', 'owsWalletPluginClient.api.Session', function (ApiMessage,
+angular.module('owsWalletPlugin.api.hello').factory('Hello', ['ApiMessage', 'owsWalletPluginClient.api.ApiError', 'owsWalletPlugin.api.hello.HelloServlet', 'owsWalletPluginClient.api.PluginApiHelper', 'owsWalletPluginClient.api.Session', function (ApiMessage,
+  /* @namespace owsWalletPluginClient.api */ ApiError,
   /* @namespace owsWalletPlugin.api.hello */ HelloServlet,
-  /* @namespace owsWalletPluginClient.api */ PluginAPIHelper,
+  /* @namespace owsWalletPluginClient.api */ PluginApiHelper,
   /* @namespace owsWalletPluginClient.api */ Session) {
 
   /**
@@ -20,7 +21,7 @@ angular.module('owsWalletPlugin.api.hello').factory('Hello', ['ApiMessage', 'ows
   function Hello(configId) {
     var self = this;
 
-    var servlet = new PluginAPIHelper(HelloServlet);
+    var servlet = new PluginApiHelper(HelloServlet);
     var apiRoot = servlet.apiRoot();
     var config = servlet.getConfig(configId);
 
@@ -49,8 +50,7 @@ angular.module('owsWalletPlugin.api.hello').factory('Hello', ['ApiMessage', 'ows
         return response.data;
 
       }).catch(function(error) {
-        $log.error('Hello.say(): ' + error.message + ', ' + error.detail);
-        throw new Error(error.message);
+        throw new ApiError(error);
         
       });
     };

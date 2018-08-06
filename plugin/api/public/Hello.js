@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('owsWalletPlugin.api.hello').factory('Hello', function (ApiMessage,
+  /* @namespace owsWalletPluginClient.api */ ApiError,
   /* @namespace owsWalletPlugin.api.hello */ HelloServlet,
-  /* @namespace owsWalletPluginClient.api */ PluginAPIHelper,
+  /* @namespace owsWalletPluginClient.api */ PluginApiHelper,
   /* @namespace owsWalletPluginClient.api */ Session) {
 
   /**
@@ -13,7 +14,7 @@ angular.module('owsWalletPlugin.api.hello').factory('Hello', function (ApiMessag
   function Hello(configId) {
     var self = this;
 
-    var servlet = new PluginAPIHelper(HelloServlet);
+    var servlet = new PluginApiHelper(HelloServlet);
     var apiRoot = servlet.apiRoot();
     var config = servlet.getConfig(configId);
 
@@ -42,8 +43,7 @@ angular.module('owsWalletPlugin.api.hello').factory('Hello', function (ApiMessag
         return response.data;
 
       }).catch(function(error) {
-        $log.error('Hello.say(): ' + error.message + ', ' + error.detail);
-        throw new Error(error.message);
+        throw new ApiError(error);
         
       });
     };
