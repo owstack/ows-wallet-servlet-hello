@@ -3,7 +3,7 @@
     "id": "org.openwalletstack.wallet.plugin.servlet.hello",
     "kind": "servlet",
     "name": "Hello",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "description": "An OWS Wallet minimal servlet plugin.",
     "author": "Open Wallet Stack",
     "url": {
@@ -13,7 +13,7 @@
       "terms": "https://openwalletstack.org/terms",
       "git": "https://github.com/owstack/ows-wallet-servlet-hello/"
     },
-    "commitHash": "82471c8"
+    "commitHash": "76ce174"
   },
   "api": {
     "root": "/hello"
