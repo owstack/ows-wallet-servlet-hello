@@ -1,7 +1,8 @@
 'use strict';
 
-angular.module('owsWalletPlugin.apiHandlers').service('doSay', function(
-  /* @namespace owsWalletPluginClient.api */ Utils) {
+angular.module('owsWalletPlugin.apiHandlers').service('doSay', [
+  'Utils',
+function(Utils) {
 
 	var root = {};
 
@@ -45,4 +46,4 @@ angular.module('owsWalletPlugin.apiHandlers').service('doSay', function(
 	};
 
   return root;
-});
+}]);

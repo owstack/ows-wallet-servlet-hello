@@ -26,7 +26,8 @@ module.exports = function(grunt) {
           'plugin/plugin.js',
           'plugin/plugin.init.js',
           'plugin/shared/**/*.js',
-          'plugin/services/**/*.js'
+          'plugin/services/**/*.js',
+          'plugin/components/**/*.js'
         ],
         tasks: ['concat:js']
       }
@@ -36,12 +37,17 @@ module.exports = function(grunt) {
         sourceMap: false,
         sourceMapStyle: 'link' // embed, link, inline
       },
+      lib_js: {
+        src: [],
+        dest: 'www/lib/components.js'
+      },
       plugin_js: {
         src: [
           'plugin/plugin.js',
           'plugin/plugin.init.js',
           'plugin/shared/**/*.js',
           'plugin/services/**/*.js',
+          'plugin/components/**/*.js',
           'plugin/api/handlers/**/*.js'
         ],
         dest: 'www/js/plugin.js'
@@ -52,17 +58,6 @@ module.exports = function(grunt) {
           'plugin/api/public/**/*.js'
         ],
         dest: 'api/api.js'
-      },
-    },
-    ngAnnotate: {
-      options: {
-        singleQuotes: true
-      },
-      api: {
-        files: {
-          'www/js/plugin.js': 'www/js/plugin.js',
-          'api/api.js': 'api/api.js'
-        },
       },
     },
     nggettext_extract: {
@@ -104,6 +99,13 @@ module.exports = function(grunt) {
         src: 'index.html',
         dest: 'www/'
       },
+      plugin_views: {
+        expand: true,
+        flatten: false,
+        cwd: 'plugin/components',
+        src: '**/*.html',
+        dest: 'www/views/'
+      },
       plugin_shared: {
         expand: true,
         flatten: false,
@@ -118,12 +120,20 @@ module.exports = function(grunt) {
         src: '**/*',
         dest: 'www/img/'
       },
+      plugin_resources: {
+        expand: true,
+        flatten: false,
+        cwd: 'plugin/assets',
+        src: ['android/**/*', 'ios/**/*', 'linux/**/*', 'mac/**/*'],
+        dest: 'resources/'
+      },
       release: {
         expand: true,
         flatten: false,
         cwd: '',
         src: [
           'api/**/*',
+          'resources/**/*',
           'www/**/*',
           'plugin.json'
         ],
@@ -146,13 +156,15 @@ module.exports = function(grunt) {
     'clean:release',
     'clean:api',
     'clean:www',
+    'concat:lib_js',
     'concat:plugin_js',
     'concat:plugin_api_js',
-    'ngAnnotate',
     'exec:build',
     'copy:plugin_index',
+    'copy:plugin_views',
     'copy:plugin_shared',
     'copy:plugin_imgs',
+    'copy:plugin_resources',
     'copy:release'
   ]);
 

@@ -1,10 +1,11 @@
 'use strict';
 
-angular.module('owsWalletPlugin.api.hello').factory('Hello', function (ApiMessage,
-  /* @namespace owsWalletPluginClient.api */ ApiError,
-  /* @namespace owsWalletPlugin.api.hello */ HelloServlet,
-  /* @namespace owsWalletPluginClient.api */ PluginApiHelper,
-  /* @namespace owsWalletPluginClient.api */ Session) {
+angular.module('owsWalletPlugin.api.hello').factory('Hello', [
+  'owsWalletPluginClient.api.ApiError',
+  'owsWalletPlugin.api.hello.HelloServlet',
+  'owsWalletPluginClient.api.PluginApiHelper',
+  'owsWalletPluginClient.api.Session',
+function (ApiMessage, ApiError, HelloServlet, PluginApiHelper, Session) {
 
   /**
    * Constructor.
@@ -52,4 +53,4 @@ angular.module('owsWalletPlugin.api.hello').factory('Hello', function (ApiMessag
   };
  
   return Hello;
-});
+}]);

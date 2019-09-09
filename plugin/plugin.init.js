@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('owsWalletPlugin').config(function($pluginConfigProvider) {
+angular.module('owsWalletPlugin').config([
+function($pluginConfigProvider) {
 
   /**
    * API routes for our service.
@@ -10,8 +11,8 @@ angular.module('owsWalletPlugin').config(function($pluginConfigProvider) {
     { path: '/hello/say', method: 'POST', handler: 'doSay' }
   ]);
 
-})
-.run(function() {
+}])
+.run([function() {
 
   owswallet.Plugin.ready(function() {
 
@@ -19,4 +20,4 @@ angular.module('owsWalletPlugin').config(function($pluginConfigProvider) {
 
   });
 
-});
+}]);

@@ -7,11 +7,12 @@ angular.module('owsWalletPlugin.api.hello', []).namespace().constant('HelloServl
 
 'use strict';
 
-angular.module('owsWalletPlugin.api.hello').factory('Hello', ['ApiMessage', 'owsWalletPluginClient.api.ApiError', 'owsWalletPlugin.api.hello.HelloServlet', 'owsWalletPluginClient.api.PluginApiHelper', 'owsWalletPluginClient.api.Session', function (ApiMessage,
-  /* @namespace owsWalletPluginClient.api */ ApiError,
-  /* @namespace owsWalletPlugin.api.hello */ HelloServlet,
-  /* @namespace owsWalletPluginClient.api */ PluginApiHelper,
-  /* @namespace owsWalletPluginClient.api */ Session) {
+angular.module('owsWalletPlugin.api.hello').factory('Hello', [
+  'owsWalletPluginClient.api.ApiError',
+  'owsWalletPlugin.api.hello.HelloServlet',
+  'owsWalletPluginClient.api.PluginApiHelper',
+  'owsWalletPluginClient.api.Session',
+function (ApiMessage, ApiError, HelloServlet, PluginApiHelper, Session) {
 
   /**
    * Constructor.

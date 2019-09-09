@@ -54,9 +54,11 @@ function updatePackageJson() {
 //
 function updatePluginJson() {
   // Read and parse content.
+  var pkg = getPackage();
   var plugin = getPlugin();
 
   // Create assignments in plugin.json
+  plugin.packageName = pkg.name;
   plugin.header.commitHash = getCommitHash();
 
   // Write the result.
