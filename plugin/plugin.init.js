@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('owsWalletPlugin').config([
+  '$pluginConfigProvider',
 function($pluginConfigProvider) {
 
   /**

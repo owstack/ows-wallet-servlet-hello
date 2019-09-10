@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('owsWalletPlugin.api.hello').factory('Hello', [
+  'ApiMessage',
   'owsWalletPluginClient.api.ApiError',
   'owsWalletPlugin.api.hello.HelloServlet',
   'owsWalletPluginClient.api.PluginApiHelper',

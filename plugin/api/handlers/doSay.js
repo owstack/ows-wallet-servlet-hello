@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('owsWalletPlugin.apiHandlers').service('doSay', [
-  'Utils',
+  'owsWalletPluginClient.api.Utils',
 function(Utils) {
 
 	var root = {};
